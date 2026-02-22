@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeetPost</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 380px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #e0e0e0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 2px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      background: #1a1a1a;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      color: #7c3aed;
+      border-bottom-color: #7c3aed;
+    }
+
+    /* Panels */
+    .panel {
+      display: none;
+      padding: 16px;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #2a2a2a;
+      border-radius: 6px;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      font-size: 13px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #7c3aed;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+      font-family: inherit;
+    }
+
+    select option {
+      background: #1a1a1a;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12px;
+      min-height: 18px;
+    }
+
+    .success {
+      color: #4ade80;
+    }
+
+    .error {
+      color: #f87171;
+    }
+
+    .help-text {
+      font-size: 11px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    /* History */
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .history-item {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .history-item:hover {
+      border-color: #7c3aed;
+    }
+
+    .history-item .hi-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e0e0e0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .history-item .hi-meta {
+      font-size: 11px;
+      color: #555;
+      margin-top: 3px;
+    }
+
+    .history-empty {
+      text-align: center;
+      color: #444;
+      font-size: 13px;
+      padding: 30px 0;
+    }
+
+    .clear-btn {
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      color: #f87171;
+      border: 1px solid #f87171;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s;
+    }
+
+    .clear-btn:hover {
+      background: rgba(248, 113, 113, 0.1);
+    }
+
+    .divider {
+      height: 1px;
+      background: #2a2a2a;
+      margin: 14px 0;
+    }
+
+    .info-link {
+      font-size: 11px;
+      color: #7c3aed;
+      text-decoration: none;
+    }
+
+    .info-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>✨ LeetPost</h1>
+    <p>Generate & post your LeetCode solutions instantly</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="settings">⚙️ Settings</div>
+    <div class="tab" data-tab="profile">👤 Profile</div>
+    <div class="tab" data-tab="history">🕘 History</div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div class="panel active" id="tab-settings">
+    <div class="form-group">
+      <label>AI Provider</label>
+      <select id="apiProvider">
+        <option value="groq">Groq - Ultra Fast (Recommended)</option>
+        <option value="gemini">Google Gemini</option>
+        <option value="openai">OpenAI (GPT-4)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>API Key <span style="color:#555;font-weight:400">(optional)</span></label>
+      <input type="password" id="apiKey" placeholder="Paste your API key, or leave empty to use built-in">
+      <p class="help-text" id="apiKeyHelpText">A shared key is included for Groq and Gemini. For OpenAI, add your own
+        key. &nbsp;
+        <a class="info-link" id="apiKeyLink" href="https://console.groq.com/keys" target="_blank">Get Groq key →</a>
+      </p>
+    </div>
+    <button class="btn" id="saveSettingsBtn">Save Settings</button>
+    <div class="status" id="settings-status"></div>
+  </div>
+
+  <!-- PROFILE TAB -->
+  <div class="panel" id="tab-profile">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" id="profileName" placeholder="e.g. Aarav Kashyap">
+    </div>
+    <div class="form-group">
+      <label>LinkedIn Username</label>
+      <input type="text" id="profileLinkedIn" placeholder="e.g. aaravkashyapsingh">
+    </div>
+    <div class="form-group">
+      <label>GitHub Username</label>
+      <input type="text" id="profileGithub" placeholder="e.g. aaravkashyap12">
+    </div>
+    <div class="form-group">
+      <label>Custom Sign-off <span style="color:#555;font-weight:400">(optional)</span></label>
+      <textarea id="profileSignoff" placeholder="e.g. ⭐ If this helped, please upvote! Happy coding!"></textarea>
+    </div>
+    <button class="btn" id="saveProfileBtn">Save Profile</button>
+    <div class="status" id="profile-status"></div>
+  </div>
+
+  <!-- HISTORY TAB -->
+  <div class="panel" id="tab-history">
+    <div class="history-list" id="historyList">
+      <div class="history-empty">No posts generated yet.<br>Generate your first post on LeetCode!</div>
+    </div>
+    <button class="clear-btn" id="clearHistoryBtn">🗑️ Clear History</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
