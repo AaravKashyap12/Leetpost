@@ -77,4 +77,4 @@ MIT License - feel free to use and contribute!
 
 ### Portfolio
 
-See more of my work at [https://www.aaravkashyap.live/](https://www.aaravkashyap.live/)..
+See more of my work at [https://www.aaravkashyap.live/](https://www.aaravkashyap.live/).
