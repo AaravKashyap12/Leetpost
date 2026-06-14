@@ -71,6 +71,10 @@ MIT License - feel free to use and contribute!
 
 ---
 
-**Developed with ❤️ by [Aarav Kashyap](https://linkedin.com/in/aaravkashyapsingh)**---
+**Developed with ❤️ by [Aarav Kashyap](https://linkedin.com/in/aaravkashyapsingh)**
+
+---
+
 ### Portfolio
-See more of my work at [https://www.aaravkashyap.live/](https://www.aaravkashyap.live/).
+
+See more of my work at [https://www.aaravkashyap.live/](https://www.aaravkashyap.live/)..
